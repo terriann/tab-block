@@ -39,7 +39,7 @@ import './tab.js';
 
  export default function Edit( props ) {
 
-	const { 
+	const {
 		attributes,
 		setAttributes,
 
@@ -54,18 +54,18 @@ import './tab.js';
 		}));
 
 		var tabLabels = [];
-		
+
 		for (let block = 0; block < innerBlockCount; block++) {
 			let tabLabel = wp.data.select( 'core/block-editor' ).getBlocks( parentBlockID )[block].attributes.tabLabel;
 			tabLabels.push(tabLabel);
 		}
-	
+
 		return tabLabels;
 	}
 
 	var labelsArray = buildTabLabelsArray();
 	var labelLengthChange = labelsArray.length !== tabLabelsArray.length;
-	
+
 	if( labelLengthChange || updateChild ){
 		setAttributes ({ tabLabelsArray: labelsArray  });
 		setAttributes ({ updateChild: false });
@@ -74,7 +74,7 @@ import './tab.js';
 	const onChangeTabLabel = toggle => {
 		setAttributes({ sideTabLayout: toggle });
 	};
-	
+
 	return (
 		<div { ...useBlockProps() }>
 			<h2>Tabbed Layout Block</h2>
@@ -83,7 +83,7 @@ import './tab.js';
 				help={
 					sideTabLayout
 						? 'Side tab layout selected'
-						: 'Defoult layout'
+						: 'Default layout'
 				}
 				checked={ sideTabLayout }
 				onChange={ onChangeTabLabel }
@@ -91,7 +91,7 @@ import './tab.js';
 				<InnerBlocks
 					allowedBlocks={ ALLOWED_BLOCKS }
 					renderAppender={ InnerBlocks.ButtonBlockAppender }
-				/>				
+				/>
 		</div>
 	);
 }
