@@ -1,8 +1,8 @@
 window.onload = function() {
-    var tabBlocks = document.querySelectorAll( '.wp-block-create-block-tabs' );
+    var tabBlocks = document.querySelectorAll( '.wp-block-tab-group-tabs' );
 
     tabBlocks.forEach( function( tabBlock, i ){
-        
+
         var tabLabels = tabBlock.querySelectorAll( '.tab-label' );
         var tabPanels = tabBlock.querySelectorAll( '.tab-panel' );
 
@@ -35,13 +35,13 @@ window.onload = function() {
         var toggleEvent = function (e){
             if (e.type === 'click') {
                 return true;
-            } 
+            }
             else if(e.type === 'keypress') {
                 var code = e.charCode || e.keyCode;
                 if ((code === 32) || (code === 13)) {
                     return true;
                 }
-            } 
+            }
             else {
                 return false;
             }
@@ -64,7 +64,7 @@ window.onload = function() {
                 activePanel.setAttribute('aria-selected', false);
                 activePanel.setAttribute('hidden', true);
 
-                tabPanels[i].classList.add('active');    
+                tabPanels[i].classList.add('active');
                 tabPanels[i].removeAttribute('hidden');
         }
 
@@ -72,7 +72,7 @@ window.onload = function() {
             if (label.classList.contains('active')){
                 tabPanels[i].classList.toggle('active');
             }
-                    
+
             label.addEventListener('click', function (e){
                 if(toggleEvent(e)=== true){
                     toggleAttributes(label, i);

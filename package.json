@@ -1,7 +1,7 @@
 {
-	"name": "tabs",
-	"version": "0.1.0",
-	"description": "Display content in a tabbed layout",
+	"name": "tab-group",
+	"version": "1.0.0",
+	"description": "Displays content in a tab group layout",
 	"author": "Amber Alter",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",

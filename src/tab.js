@@ -9,11 +9,11 @@ import { subscribe } from '@wordpress/data';
 /**********************************************************
  * Registering Child Innerblock for the Tabbed Content block
  **********************************************************/
-registerBlockType( 'create-block/tab', {
+registerBlockType( 'tab-group/tab', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	title: __( 'Tab' ), // Block title.
 	icon: 'welcome-add-page', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
-	parent: [ 'create-block/tabs' ],
+	parent: [ 'tab-group/tabs' ],
 	category: 'design', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	attributes: {
         tabLabel:{
@@ -44,7 +44,7 @@ registerBlockType( 'create-block/tab', {
 			setAttributes
 		} = props;
 
-		const parentBlockID = wp.data.select( 'core/block-editor' ).getBlockParentsByBlockName(props.clientId, ['create-block/tabs']);
+		const parentBlockID = wp.data.select( 'core/block-editor' ).getBlockParentsByBlockName(props.clientId, ['tab-group/tabs']);
 		var	savedBlockIndex = blockIndex;
 		const getBlockIndex = wp.data.select( 'core/block-editor' ).getBlockOrder( parentBlockID ).indexOf( props.clientId );
 

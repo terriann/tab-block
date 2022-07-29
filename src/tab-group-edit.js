@@ -8,7 +8,7 @@ import { InnerBlocks, InspectorControls } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
 import { SelectControl , Panel, PanelBody, PanelRow } from '@wordpress/components';
 
-const ALLOWED_BLOCKS = [ 'create-block/tab' ];
+const ALLOWED_BLOCKS = [ 'tab-group/tab' ];
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -36,7 +36,7 @@ import './tab.js';
  * @return {WPElement} Element to render.
  */
 
- export default function Edit( props ) {
+ export default function edit( props ) {
 
 	const {
 		attributes,

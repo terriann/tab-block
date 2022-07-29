@@ -1,6 +1,6 @@
 {
 	"apiVersion": 2,
-	"name": "create-block/tabs",
+	"name": "tab-group/tabs",
 	"version": "0.1.0",
 	"title": "Tab Layout",
 	"category": "design",
@@ -24,7 +24,7 @@
 			"default": "top"
 		}
 	},
-	"textdomain": "tabs",
+	"textdomain": "tab-group",
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css"
