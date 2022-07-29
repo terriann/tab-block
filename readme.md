@@ -1,5 +1,6 @@
 # Tab Group Block
 
+Working repo: https://github.com/terriann/tab-group-block
 Forked from: https://github.com/amalter/tab_block
 Blog: https://www.amberalter.com/2021/11/20/building-a-gutenberg-block-for-tabbed-content/
 
@@ -11,8 +12,8 @@ Block displays a simple tab layout using parent block `[ 'tab-group/tabs' ]` and
 
 ## Updating plugin code
 
-1. Cd into `/plugins/tab-block` directory and run `npm install`
-2. Inside `/plugins/tab-block` directory you can run the following commands during development and build:
+1. Cd into `/plugins/tab-group-block` directory and run `npm install`
+2. Inside `/plugins/tab-group-block` directory you can run the following commands during development and build:
    * `npm start`  Starts the build for development
    * `npm run build` Builds the code for production
    * `npm run format` Formats files
