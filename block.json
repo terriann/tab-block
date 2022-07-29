@@ -14,14 +14,14 @@
 		"tabLabelsArray":{
 			"type": "array",
 			"default": []
-		},		
+		},
 		"updateChild":{
 			"type": "boolean",
 			"default": false
-		},		
-		"sideTabLayout":{
-			"type": "boolean",
-			"default": false
+		},
+		"tabLayout":{
+			"enum": [ "top", "left" ],
+			"default": "top"
 		}
 	},
 	"textdomain": "tabs",

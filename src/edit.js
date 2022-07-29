@@ -4,10 +4,9 @@
  * @see https://developer.wordpress.org/block-editor/packages/packages-i18n/
  */
 import { __ } from '@wordpress/i18n';
-import { InnerBlocks } from '@wordpress/block-editor';
+import { InnerBlocks, InspectorControls } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
-import { ToggleControl } from '@wordpress/components';
-import { useState } from '@wordpress/element';
+import { SelectControl , Panel, PanelBody, PanelRow } from '@wordpress/components';
 
 const ALLOWED_BLOCKS = [ 'create-block/tab' ];
 
@@ -44,7 +43,7 @@ import './tab.js';
 		setAttributes,
 
 	} = props;
-	const { tabLabelsArray, updateChild, sideTabLayout } = attributes;
+	const { tabLabelsArray, updateChild, tabLayout } = attributes;
 
 	const buildTabLabelsArray = () =>{
 		//function gets child block attributes and saves as an array to parent attributes
@@ -71,27 +70,33 @@ import './tab.js';
 		setAttributes ({ updateChild: false });
 	}
 
-	const onChangeTabLabel = toggle => {
-		setAttributes({ sideTabLayout: toggle });
+	const setTabLayout = value => {
+		setAttributes({ tabLayout: value });
 	};
 
 	return (
 		<div { ...useBlockProps() }>
-			<h2>Tabbed Layout Block</h2>
-			<ToggleControl
-				label="Switch to side tab layout"
-				help={
-					sideTabLayout
-						? 'Side tab layout selected'
-						: 'Default layout'
-				}
-				checked={ sideTabLayout }
-				onChange={ onChangeTabLabel }
+			<InspectorControls>
+				<Panel>
+					<PanelBody title="Layout" initialOpen={ true }>
+						<PanelRow><SelectControl
+						label="Tab Layout"
+						value={ tabLayout }
+						options={ [
+							{ label: 'Top', value: 'top' },
+							{ label: 'Left Side', value: 'left' },
+						] }
+						onChange={ ( tabLayout ) => setTabLayout( tabLayout ) }
+						__nextHasNoMarginBottom
+					/></PanelRow>
+					</PanelBody>
+				</Panel>
+			</InspectorControls>
+
+			<InnerBlocks
+				allowedBlocks={ ALLOWED_BLOCKS }
+				renderAppender={ InnerBlocks.ButtonBlockAppender }
 			/>
-				<InnerBlocks
-					allowedBlocks={ ALLOWED_BLOCKS }
-					renderAppender={ InnerBlocks.ButtonBlockAppender }
-				/>
 		</div>
 	);
 }

@@ -20,5 +20,11 @@ Block displays a simple tab layout using parent block `[ 'create-block/tabs' ]` 
 
 ## Changelog
 
+= 1.0.0 =
+
+* Fix typos
+* Refactor tab layout
+* **BREAKING CHANGE** - block attributes for tab layout changed with no deprecation steps. Blocks will need to be recovered and tab layout reset for any non default (left/side) tab groups
+
 = 0.1.0 =
 * Release

@@ -30,7 +30,7 @@ registerBlockType( 'create-block/tab', {
 	],
 
 	/**
-	 * 
+	 *
 	 * Edit function for Child Slide Block
 	 *
 	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
@@ -39,15 +39,15 @@ registerBlockType( 'create-block/tab', {
 	 * @returns {Mixed} JSX Component.
 	 */
 	edit: ( props ) => {
-        const { 
-			attributes: { tabLabel, blockIndex }, 
-			setAttributes 
+        const {
+			attributes: { tabLabel, blockIndex },
+			setAttributes
 		} = props;
 
 		const parentBlockID = wp.data.select( 'core/block-editor' ).getBlockParentsByBlockName(props.clientId, ['create-block/tabs']);
 		var	savedBlockIndex = blockIndex;
 		const getBlockIndex = wp.data.select( 'core/block-editor' ).getBlockOrder( parentBlockID ).indexOf( props.clientId );
-	
+
 		const unsubscribe = subscribe( () => {
 				var newBlockIndex = wp.data.select( 'core/block-editor' ).getBlockOrder( parentBlockID ).indexOf( props.clientId );
 				var blockIndexChange = newBlockIndex !== savedBlockIndex;
@@ -56,9 +56,9 @@ registerBlockType( 'create-block/tab', {
 					//update attributes when blocks move up or down
 					unsubscribe()
 					setAttributes({ blockIndex: newBlockIndex});
-					wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( parentBlockID, { updateChild: true } );	
+					wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( parentBlockID, { updateChild: true } );
 				}
-				
+
 		} );
 
 		const onChangeTabLabel = newTabLabel => {
@@ -87,7 +87,7 @@ registerBlockType( 'create-block/tab', {
 	/**
 	 *
 	 * Save function for Child Slide Block
-	 * 
+	 *
 	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
 	 *
 	 * @param {Object} props Props.

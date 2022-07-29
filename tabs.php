@@ -4,7 +4,7 @@
  * Description:       Display content in a tabbed layout
  * Requires at least: 5.8
  * Requires PHP:      7.0
- * Version:           0.1.0
+ * Version:           1.0.0
  * Author:            Amber Alter
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -31,7 +31,7 @@ function create_block_tabs_block_init() {
 				);
 
 				return $content;
-			
+
 			}//if frontend
 		}//render callback
 	));
