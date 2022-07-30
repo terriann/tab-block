@@ -21,6 +21,12 @@ Block displays a simple tab layout using parent block `[ 'tab-group/tabs' ]` and
    * `npm run lint:js` Lints JavaScript files.
    * `npm run packages-update` Updates WordPress packages to the latest version.
 
+## Resources
+
+* Tab style inspiration
+  * https://alvarotrigo.com/blog/html-css-tabs/
+  * https://codepen.io/alvarotrigo/pen/bGoPzMe
+
 
 ## Changelog
 

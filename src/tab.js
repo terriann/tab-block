@@ -9,24 +9,24 @@ import { subscribe } from '@wordpress/data';
 /**********************************************************
  * Registering Child Innerblock for the Tabbed Content block
  **********************************************************/
-registerBlockType( 'tab-group/tab', {
+registerBlockType('tab-group/tab', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'Tab' ), // Block title.
+	title: __('Tab'), // Block title.
 	icon: 'welcome-add-page', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
-	parent: [ 'tab-group/tabs' ],
+	parent: ['tab-group/tabs'],
 	category: 'design', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	attributes: {
-        tabLabel:{
-            type: 'string',
+		tabLabel: {
+			type: 'string',
 			default: ''
-        },
-		blockIndex:{
-            type: 'number',
+		},
+		blockIndex: {
+			type: 'number',
 			default: ''
-        }
-    },
-    keywords: [
-		__( 'tab' ),
+		}
+	},
+	keywords: [
+		__('tab'),
 	],
 
 	/**
@@ -38,46 +38,46 @@ registerBlockType( 'tab-group/tab', {
 	 * @param {Object} props Props.
 	 * @returns {Mixed} JSX Component.
 	 */
-	edit: ( props ) => {
-        const {
+	edit: (props) => {
+		const {
 			attributes: { tabLabel, blockIndex },
 			setAttributes
 		} = props;
 
-		const parentBlockID = wp.data.select( 'core/block-editor' ).getBlockParentsByBlockName(props.clientId, ['tab-group/tabs']);
-		var	savedBlockIndex = blockIndex;
-		const getBlockIndex = wp.data.select( 'core/block-editor' ).getBlockOrder( parentBlockID ).indexOf( props.clientId );
+		const parentBlockID = wp.data.select('core/block-editor').getBlockParentsByBlockName(props.clientId, ['tab-group/tabs']);
+		var savedBlockIndex = blockIndex;
+		const getBlockIndex = wp.data.select('core/block-editor').getBlockOrder(parentBlockID).indexOf(props.clientId);
 
-		const unsubscribe = subscribe( () => {
-				var newBlockIndex = wp.data.select( 'core/block-editor' ).getBlockOrder( parentBlockID ).indexOf( props.clientId );
-				var blockIndexChange = newBlockIndex !== savedBlockIndex;
+		const unsubscribe = subscribe(() => {
+			var newBlockIndex = wp.data.select('core/block-editor').getBlockOrder(parentBlockID).indexOf(props.clientId);
+			var blockIndexChange = newBlockIndex !== savedBlockIndex;
 
-				if(blockIndexChange){
-					//update attributes when blocks move up or down
-					unsubscribe()
-					setAttributes({ blockIndex: newBlockIndex});
-					wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( parentBlockID, { updateChild: true } );
-				}
+			if (blockIndexChange) {
+				//update attributes when blocks move up or down
+				unsubscribe()
+				setAttributes({ blockIndex: newBlockIndex });
+				wp.data.dispatch('core/block-editor').updateBlockAttributes(parentBlockID, { updateChild: true });
+			}
 
-		} );
+		});
 
 		const onChangeTabLabel = newTabLabel => {
-			setAttributes({ tabLabel: newTabLabel});
-			setAttributes({ blockIndex: getBlockIndex});
-			wp.data.dispatch( 'core/block-editor' ).updateBlockAttributes( parentBlockID, { updateChild: true } );
+			setAttributes({ tabLabel: newTabLabel });
+			setAttributes({ blockIndex: getBlockIndex });
+			wp.data.dispatch('core/block-editor').updateBlockAttributes(parentBlockID, { updateChild: true });
 		};
 
 		return (
-			<div className={ props.className }>
+			<div className={props.className}>
 				<h4>Tab Label</h4>
-                <TextControl
-                className={ "tab-label_input" }
-                    value={ tabLabel }
-                    onChange={onChangeTabLabel}
-                    placeholder="Add Tab Label"
+				<TextControl
+					className={"tab-label_input"}
+					value={tabLabel}
+					onChange={onChangeTabLabel}
+					placeholder="Add Tab Label"
 					type="text"
-                />
-                <h4>Tab Content</h4>
+				/>
+				<h4>Tab Content</h4>
 				<InnerBlocks
 				/>
 			</div>
@@ -93,15 +93,15 @@ registerBlockType( 'tab-group/tab', {
 	 * @param {Object} props Props.
 	 * @returns {Mixed} JSX Frontend HTML.
 	 */
-	save: ( props ) => {
-        const {
+	save: (props) => {
+		const {
 			attributes: { tabLabel }
 		} = props;
 
 		return (
 			<div className="tab-panel" role="tabpanel" tabindex="0">
-					<InnerBlocks.Content />
+				<InnerBlocks.Content />
 			</div>
 		);
 	},
-} );
+});

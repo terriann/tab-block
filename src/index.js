@@ -1,4 +1,4 @@
 /**
-  * Import blocks.
-  */
-  import './tab-group';
+	* Import blocks.
+	*/
+import './tab-group';
