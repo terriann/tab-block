@@ -1,16 +1,16 @@
 <?php
 /**
- * Plugin Name:       Tab Layout
- * Description:       Display content in a tabbed layout
+ * Plugin Name:       Tab Group Block
+ * Description:       Displays content in a tab group layout
  * Requires at least: 5.8
  * Requires PHP:      7.0
- * Version:           0.1.0
- * Author:            Amber Alter
+ * Version:           1.0.0
+ * Author:            Amber Alter, Terri Ann Swallow
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       tabs
+ * Text Domain:       tab-group
  *
- * @package           create-block
+ * @package           tab-group
  */
 
 /**
@@ -26,14 +26,14 @@ function create_block_tabs_block_init() {
 			if( !is_admin() ) {
 
 				wp_enqueue_script(
-					'tabs-frontend',
+					'tab-group-frontend',
 					plugins_url('assets/frontend.js', __FILE__),
 				);
 
 				return $content;
-			
-			}//if frontend
-		}//render callback
+
+			}
+		}
 	));
 
 }

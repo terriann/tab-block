@@ -5,66 +5,146 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-$orange: #f57814;
-$black: #333;
-$light-gray: #bababa;
-$white: #fff;
+$primary-color: rgba(216, 164, 95, 1);
+$accent-color: rgba(48, 181, 196, 1);
+$inactive-tab-color: rgba(249, 245, 245, 1);
+$active-tab-color: rgba(255, 255, 255, 1);
+$text-color: rgba(19, 25, 30, 1);
 
-.wp-block-create-block-tabs {
-	.tab {
-		&-labels {
-			//border-bottom: 1px solid #ccc;
-			padding-left: 0;
-			.tab-label {
-				display: inline-block;
-				list-style: none;
-				padding: 1em 2em 0.5em;
-				margin: 2.5px;
-				cursor: pointer;
-				&.active {
-					background-color: $white;
-				}
-				&.active,
-				&:focus,
+.wp-block-tab-group-tabs {
+	margin-bottom: 1.41575em;
+
+	ul.tab-labels {
+		margin: 0;
+		padding: 0;
+
+		li {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			border-bottom-width: 0;
+
+			label {
+				float: left;
+				padding: 15px 25px;
+				border: 1px solid #ddd;
+				border-bottom-width: 0;
+				background: $inactive-tab-color;
+				color: #444;
+				border-radius: 10px 10px 0 0;
+
 				&:hover {
-					border-bottom: $orange 4px solid;
+					cursor: pointer;
+					background: darken( $active-tab-color, 5%);
+				}
+
+				&:active {
+					background: $active-tab-color;
 				}
 			}
-		}
-		&-content {
-			.tab-panel {
-				display: none;
-				&.active {
-					display: block;
+
+			&:not(:last-child) label {
+				border-right-width: 0;
+			}
+
+			&.active {
+				label {
+					background: white;
+					color: #111;
+					position: relative;
+
+					&:hover {
+						cursor: default;
+					}
+
+					&:after {
+						content: '';
+						display: block;
+						position: absolute;
+						height: 2px;
+						width: 100%;
+						background: $active-tab-color;
+						left: 0;
+						bottom: -1px;
+					}
 				}
 			}
 		}
 	}
+
+	section {
+		clear: both;
+		padding: 20px;
+		width: 100%;
+		border: 1px solid #ddd;
+		background: $active-tab-color;
+
+		div.tab-panel {
+			display: none;
+
+			&.active {
+				display: block;
+			}
+
+			p:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
 	@media only screen and (min-width: 768px) {
-		&.side-tab-layout {
+		&.layout-left {
 			display: flex;
 			width: 100%;
-			.tab-labels {
+
+			ul.tab-labels li {
 				display: flex;
 				flex-direction: column;
-				border-right: solid $light-gray 1px;
+
+				label {
+					border-radius: 10px 0 0 10px;
+					border-right-width: 0;
+					border-bottom-width: 1px;
+				}
+
+				&:not(:last-child) label {
+					border-bottom-width: 0;
+				}
+
+				&.active {
+					label {
+
+						// Something is wrong with this definition - it won't put the after on the right side
+						&:after {
+							width: 2px;
+							height: 100%;
+							right: -1px;
+							top: 0;
+							left: unset;
+						}
+					}
+				}
 			}
+
 			.tab-content {
 				flex: 1;
 				display: flex;
 				flex-direction: column;
+
 				.tab-panel.active {
 					flex: 1;
 					display: flex;
 					flex-direction: column;
+
 					.wp-block-cgb-block-page-section {
 						flex: 1;
 					}
-					& > * {
+
+					&>* {
 						padding: 0 2rem;
 					}
 				}
 			}
 		}
 	}
-} //.wp-block-create-block-tabs
+}

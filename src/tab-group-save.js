@@ -24,28 +24,32 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {WPElement} Element to render.
  */
-export default function save( props ) {
+export default function save(props) {
 	const {
-		attributes: { tabLabelsArray, sideTabLayout }
+		attributes: { tabLabelsArray, tabLayout }
 	} = props;
 
 	var blockProps = useBlockProps.save();
-	if (sideTabLayout){
-		blockProps = useBlockProps.save({
-			className: 'side-tab-layout'
-		});
-	}
-	
+	blockProps = useBlockProps.save({
+		className: `layout-${tabLayout}`
+	});
+
 	return (
-		<div { ...blockProps } >
-			<ul className="tab-labels" role="tablist" aria-label="tabbed content">
-				{tabLabelsArray.map((label, i) => {
-					return ( <li className={i == 0 ? "tab-label active" : "tab-label"} role="tab" aria-selected={i == 0 ? "true" : "false"} aria-controls={label} tabindex="0"><RawHTML>{label}</RawHTML></li>);	
-				})}
-			</ul>
-			<div className="tab-content">
-				<InnerBlocks.Content />
-			</div>		
+		<div {...blockProps} >
+			<nav>
+				<ul className="tab-labels" role="tablist" aria-label="tabbed content">
+					{tabLabelsArray.map((label, i) => {
+						return (<li className={i == 0 ? "tab-label active" : "tab-label"} role="tab" aria-selected={i == 0 ? "true" : "false"} aria-controls={label} tabindex="0"><label><RawHTML>{label}</RawHTML></label></li>);
+					})}
+				</ul>
+			</nav>
+
+			<section>
+				<div className="tab-content">
+					<InnerBlocks.Content />
+				</div>
+
+			</section>
 		</div>
 	);
 }
