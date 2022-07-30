@@ -34,8 +34,10 @@ Block displays a simple tab layout using parent block `[ 'tab-group/tabs' ]` and
 
 * Fix typos
 * Refactor tab layout
-* **BREAKING CHANGE** - block attributes for tab layout changed with no deprecation steps. Blocks will need to be recovered and tab layout reset for any non default (left/side) tab groups
-* **BREAKING CHANGE** - block name changes from `create-block/tabs` to `tab-group/tabs`
+* Change defauly tab styling
+* **BREAKING CHANGE** -  Renamed plugin, will cause the old plugin to be deactivated and will need to be activated again within WordPress admin.
+* **BREAKING CHANGE** - block attributes for tab layout changed with no deprecation steps. Blocks will need to be recovered and tab layout reset for any non-default (left/side) tab groups
+* **BREAKING CHANGE** - block name changed from `create-block/tabs` to `tab-group/tabs`, this is a non-recoverable change.
 
 = 0.1.0 =
 * Release

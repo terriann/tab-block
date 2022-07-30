@@ -5,7 +5,7 @@
  * Requires at least: 5.8
  * Requires PHP:      7.0
  * Version:           1.0.0
- * Author:            Amber Alter
+ * Author:            Amber Alter, Terri Ann Swallow
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       tab-group
